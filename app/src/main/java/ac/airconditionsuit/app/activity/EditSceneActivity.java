@@ -76,6 +76,16 @@ public class EditSceneActivity extends BaseActivity {
                                 return;
                             }
                         }
+                        int flag_cancel = 0;
+                        for (int i = 0; i < temp_on_off.size(); i++) {
+                            if (temp_on_off.get(i) == 2) {
+                                flag_cancel ++;
+                            }
+                        }
+                        if(flag_cancel == temp_on_off.size()){
+                            MyApp.getApp().showToast("请至少设定一个空调的模式");
+                            return;
+                        }
                         Scene scene = new Scene();
                         ArrayList<Command> commands = new ArrayList<>();
                         for (int i = 0; i < temp_on_off.size(); i++) {
@@ -108,6 +118,16 @@ public class EditSceneActivity extends BaseActivity {
                                 }
                             }
                         }
+                        int flag_cancel = 0;
+                        for (int i = 0; i < temp_on_off.size(); i++) {
+                            if (temp_on_off.get(i) == 2) {
+                                flag_cancel ++;
+                            }
+                        }
+                        if(flag_cancel == temp_on_off.size()){
+                            MyApp.getApp().showToast("请至少设定一个空调的模式");
+                            return;
+                        }
 
                         if (MyApp.getApp().getServerConfigManager().getScene().get(index).getCommands() != null) {
                             MyApp.getApp().getServerConfigManager().getScene().get(index).getCommands().clear();
@@ -116,7 +136,7 @@ public class EditSceneActivity extends BaseActivity {
                         }
                         for (int i = 0; i < temp_on_off.size(); i++) {
                             Log.v("zhulinan: onoff", temp_on_off.get(i).toString());
-                            Log.v("zhulinan: adress", String.valueOf(MyApp.getApp().getServerConfigManager().getDevices_new().get(i).getAddress_new()));
+                            Log.v("zhulinan: address", String.valueOf(MyApp.getApp().getServerConfigManager().getDevices_new().get(i).getAddress_new()));
 
                             if (temp_on_off.get(i) != 2) {
                                 Command command = new Command();
