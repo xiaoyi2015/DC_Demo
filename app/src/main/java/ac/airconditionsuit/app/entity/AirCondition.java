@@ -1,5 +1,7 @@
 package ac.airconditionsuit.app.entity;
 
+import android.util.Log;
+
 import ac.airconditionsuit.app.aircondition.AirConditionControl;
 import ac.airconditionsuit.app.aircondition.AirConditionManager;
 import ac.airconditionsuit.app.aircondition.AirConditionStatusResponse;
@@ -9,9 +11,9 @@ import ac.airconditionsuit.app.aircondition.AirConditionStatusResponse;
  */
 public class AirCondition extends Command {
     public static final int UNFETCH = -10010;
-    int realTemperature = UNFETCH;
+    int realTemperature;
     int warning;
-    int flag = 0;
+    private int flag = 0;
 
     public int getFlag() {
         return flag;
@@ -26,6 +28,7 @@ public class AirCondition extends Command {
         this.warning = airConditionStatusResponse.getWarning();
         this.address = airConditionStatusResponse.getAddress();
         this.realTemperature = airConditionStatusResponse.getHuifengTemperature();
+        Log.v("zln", this.realTemperature + "");
         this.mode = airConditionStatusResponse.getMode();
         this.onoff = airConditionStatusResponse.getOnoff() == 1;
         this.temperature = airConditionStatusResponse.getTemperature();
@@ -56,6 +59,7 @@ public class AirCondition extends Command {
         this.warning = ac.warning;
         this.address = ac.address;
         this.realTemperature = ac.realTemperature;
+        Log.v("zln", this.realTemperature + "");
         this.mode = ac.mode;
         this.onoff = ac.onoff;
         this.temperature = ac.temperature;
@@ -87,7 +91,7 @@ public class AirCondition extends Command {
     }
 
     public int getRealTemperature() {
-        return realTemperature;
+        return this.realTemperature;
     }
 
     public void setRealTemperature(int realTemperature) {

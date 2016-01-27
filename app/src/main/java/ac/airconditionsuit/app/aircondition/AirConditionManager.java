@@ -241,10 +241,12 @@ public class AirConditionManager {
                 } else {
                     airCondition.setTemperature(temp.getTemperature());
                 }
-                if (temp.getRealTemperature() > 30 || temp.getRealTemperature() < 17) {
+                int t = temp.getRealTemperature();
+                Log.v("zln", temp.getRealTemperature() + "");
+                if (t > 99 || (t + 99) < 0) {
                     airCondition.setRealTemperature(AirConditionControl.UNKNOW);
                 } else {
-                    airCondition.setRealTemperature(temp.getRealTemperature());
+                    airCondition.setRealTemperature(t);
                 }
             } else {
                 if (temp.getAirconditionMode() != airCondition.getAirconditionMode()) {
@@ -261,7 +263,7 @@ public class AirConditionManager {
                     airCondition.setTemperature(AirConditionControl.UNKNOW);
                 }
                 if (temp.getRealTemperature() != airCondition.getRealTemperature()
-                        || temp.getRealTemperature() > 30 || temp.getRealTemperature() < 17) {
+                        || temp.getRealTemperature() > 99 || temp.getRealTemperature() < -99) {
                     airCondition.setRealTemperature(AirConditionControl.UNKNOW);
                 }
             }

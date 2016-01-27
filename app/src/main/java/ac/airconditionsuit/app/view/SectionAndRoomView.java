@@ -154,6 +154,7 @@ public class SectionAndRoomView extends RelativeLayout {
                 airCondition.setAirconditionMode(MyApp.getApp().getAirConditionManager().getAirConditions(rooms.get(position)).getAirconditionMode());
                 airCondition.setAirconditionFan(MyApp.getApp().getAirConditionManager().getAirConditions(rooms.get(position)).getAirconditionFan());
                 airCondition.setTemperature(MyApp.getApp().getAirConditionManager().getAirConditions(rooms.get(position)).getTemperature());
+                airCondition.setRealTemperature(MyApp.getApp().getAirConditionManager().getAirConditions(rooms.get(position)).getRealTemperature());
             }
             switch (UIManager.UITYPE){
                 case 1:
@@ -893,6 +894,8 @@ public class SectionAndRoomView extends RelativeLayout {
                                         find_min1 = true;
                                     }
                                     for (int i = 1; i < rooms.get(position).getElements().size(); i++) {
+                                        Log.v("zln", MyApp.getApp().getAirConditionManager().getAirConditionByIndex_new(rooms.
+                                                get(position).getElements().get(i)).getRealTemperature() + "");
                                         if(!find_min1) {
                                             if (MyApp.getApp().getAirConditionManager().getAirConditionByIndex_new(rooms.
                                                     get(position).getElements().get(i)).getOnoff() == 1) {
@@ -928,6 +931,7 @@ public class SectionAndRoomView extends RelativeLayout {
                                     ac = new AirCondition(airCondition);
                                 }
                                 Intent intent = new Intent();
+                                Log.v("zln", ac.getRealTemperature() + "");
                                 ac.repair();
                                 intent.putExtra("air", ac.toJsonString());
                                 intent.putExtra("room", rooms.get(position).toJsonString());

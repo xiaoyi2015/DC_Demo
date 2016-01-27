@@ -155,11 +155,15 @@ public class DragDeviceActivity extends BaseActivity {
                     for (int j = 0; j < MyApp.getApp().getServerConfigManager().getSections().size(); j++) {
                         List<Room> pages = MyApp.getApp().getServerConfigManager().getSections().get(j).getPages();
                         for (int i = 0; i < pages.size(); i++) {
-                            room_name_list.add(pages.get(i).getName());
+                            if(i != position && j != index){
+                                room_name_list.add(pages.get(i).getName());
+                            }
                         }
                     }
                     for (int i = 0; i < dragDeviceAdapter.rooms.size(); i++) {
-                        room_name_list.add(dragDeviceAdapter.rooms.get(i).getName());
+                        if(i != position) {
+                            room_name_list.add(dragDeviceAdapter.rooms.get(i).getName());
+                        }
                     }
                     Intent intent = new Intent();
                     intent.putExtra("index", position);

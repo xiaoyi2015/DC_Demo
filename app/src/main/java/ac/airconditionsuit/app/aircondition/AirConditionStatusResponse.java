@@ -75,8 +75,6 @@ public class AirConditionStatusResponse extends AirConditionControl {
 
         int temperature = input[4];
 
-        Log.v("liutao", "主机反馈空调状态 address: " + result.address + " mode: " + mode + " wind: " + windVelocity + " temp: " + temperature);
-
         if (result.mode == MODE_HEATING) {
             if (temperature < 17 || temperature > 30) {
                 throw new Exception("temperature error in heating mode");
@@ -92,6 +90,8 @@ public class AirConditionStatusResponse extends AirConditionControl {
         result.huifengTemperature = input[5];
 
         result.warning = input[6];
+
+        Log.v("zln", "主机反馈空调状态 address: " + result.address + " mode: " + mode + " wind: " + windVelocity + " temp: " + temperature + "real" + result.huifengTemperature);
 
         return result;
     }
